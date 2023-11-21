@@ -34,42 +34,70 @@ CODING QUALITY AND VISUAL DESIGN
 
 // all code goes below here ....
 
-let k;
-let track = [1, 0];
+let trackNumber = [1, 0];
+let victimX, victimY;
 
 function setup() {
     createCanvas(800, 300);
+    victimX = [];
+    victimY = [];
 }
 
 function draw() {
     background(255);
-    line(0, 100, 800, 100);
-    line(0, 200, 800, 200);
+
+    drawTrack(100, 100);
+    drawTrack(200, 200);
+
+    victimFlow();
+
     train();
 }
 
 function train() {
-    if (track[0] == 1 && track[1] == 0) {
+    if (trackNumber[0] == 1 && trackNumber[1] == 0) {
         rect(30, 70, 150, 60);
     }
-    if (track[0] == 2 && track[1] == 0) {
+    if (trackNumber[0] == 2 && trackNumber[1] == 0) {
         rect(30, 170, 150, 60);
     }
-    if (track[1] == 1) {
+    if (trackNumber[1] == 1) {
         rect(30, 75, 60, 150);
     }
 }
 
+function victimFlow() {
+    let x = random(0, 100);
+    if (x < 1) {
+        victimX[victimX.length] = 800;
+        victimY[victimY.length] = Math.random() < 0.5 ? 100 : 200;
+    }
+    for (let i = 0; i < victimX.length; i++) {
+        victimX[i] -= 1;
+        drawVictim(victimX[i], victimY[i]);
+    }
+}
+
+function drawTrack(y1, y2) {
+    line(0, y1 + 20, 800, y2 + 20);
+    line(0, y1 - 20, 800, y2 - 20);
+}
+
+function drawVictim(x, y) {
+    ellipse(x, y, 20, 20);
+    rect(x - 10, y + 10, 20, 30);
+}
+
 function mousePressed() {
-    track[1] = 1;
+    trackNumber[1] = 1;
 }
 
 
 function mouseReleased() {
-    if (track[0] == 1) {
-        track[0] = 2;
-    } else if (track[0] == 2) {
-        track[0] = 1;
+    if (trackNumber[0] == 1) {
+        trackNumber[0] = 2;
+    } else if (trackNumber[0] == 2) {
+        trackNumber[0] = 1;
     }
-    track[1] = 0;
+    trackNumber[1] = 0;
 }
