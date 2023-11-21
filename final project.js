@@ -80,20 +80,18 @@ function victimFlow() {
 }
 
 function detectVictim() {
-    if (victimX[0] < 150) {
+    if (victimX[0] < 150 && trackNumber[1] == 0) {
         if (int(victimY[0]) == 100 && trackNumber[0] == 1) {
-            victimX[0] = null;
-            victimY[0] = null;
+            victimX.shift();
+            victimY.shift();
         } else if (int(victimY[0]) == 200 && trackNumber[0] == 2) {
-            victimX[0] = null;
-            victimY[0] = null;
-        } else if (trackNumber[0] == 3) {
-            victimX[0] = null;
-            victimY[0] = null;
+            victimX.shift();
+            victimY.shift();
         }
-    } else if (victimX[0] < 40 && trackNumber[1] == 1) {
-        victimX[0] = null;
-        victimY[0] = null;
+    }
+    if (victimX[0] < 70 && trackNumber[1] == 1) {
+        victimX.shift();
+        victimY.shift();
     }
 }
 
@@ -110,7 +108,6 @@ function drawVictim(x, y) {
 function mousePressed() {
     trackNumber[1] = 1;
 }
-
 
 function mouseReleased() {
     if (trackNumber[0] == 1) {
