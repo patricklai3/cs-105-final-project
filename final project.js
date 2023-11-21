@@ -50,6 +50,7 @@ function draw() {
     drawTrack(200, 200);
 
     victimFlow();
+    detectVictim();
 
     train();
 }
@@ -73,8 +74,26 @@ function victimFlow() {
         victimY[victimY.length] = Math.random() < 0.5 ? 100 : 200;
     }
     for (let i = 0; i < victimX.length; i++) {
-        victimX[i] -= 1;
+        victimX[i] -= 3;
         drawVictim(victimX[i], victimY[i]);
+    }
+}
+
+function detectVictim() {
+    if (victimX[0] < 150) {
+        if (int(victimY[0]) == 100 && trackNumber[0] == 1) {
+            victimX[0] = null;
+            victimY[0] = null;
+        } else if (int(victimY[0]) == 200 && trackNumber[0] == 2) {
+            victimX[0] = null;
+            victimY[0] = null;
+        } else if (trackNumber[0] == 3) {
+            victimX[0] = null;
+            victimY[0] = null;
+        }
+    } else if (victimX[0] < 40 && trackNumber[1] == 1) {
+        victimX[0] = null;
+        victimY[0] = null;
     }
 }
 
