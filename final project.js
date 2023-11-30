@@ -80,20 +80,27 @@ function victimFlow() {
 }
 
 function detectVictim() {
-    if (victimX[0] < 150 && trackNumber[1] == 0) {
-        if (int(victimY[0]) == 100 && trackNumber[0] == 1) {
-            victimX.shift();
-            victimY.shift();
-        } else if (int(victimY[0]) == 200 && trackNumber[0] == 2) {
-            victimX.shift();
-            victimY.shift();
+    for (let i = 0; i < victimX.length; i++) {
+        if (victimX[i] < 150) {
+            if (victimY[i] == 100 && trackNumber[0] == 1 && trackNumber[1] == 0) {
+                victimX.splice(i, 1);
+                victimY.splice(i, 1);
+            } else if (victimY[i] == 200 && trackNumber[0] == 2 && trackNumber[1] == 0) {
+                victimX.splice(i, 1);
+                victimY.splice(i, 1);
+            }
+        }
+        if (victimX[i] < 90 && trackNumber[1] == 1) {
+            victimX.splice(i, 1);
+            victimY.splice(i, 1);
+        }
+        if (victimX[i] < 0) {
+            victimX.splice(i, 1);
+            victimY.splice(i, 1);
         }
     }
-    if (victimX[0] < 70 && trackNumber[1] == 1) {
-        victimX.shift();
-        victimY.shift();
-    }
 }
+    
 
 function drawTrack(y1, y2) {
     line(0, y1 + 20, 800, y2 + 20);
