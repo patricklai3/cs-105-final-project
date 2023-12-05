@@ -5,33 +5,38 @@ Patrick Lai
 p9lai
 
 INSTRUCTIONS
-<explain what your program does and how to use it>
+Use mouse clicks and press to switch tracks and drift. 
+Avoid rocks and collect victims and wrenches. 
+Score is displayed in the top left corner. 
+Game ends when life reaches 0.
+
 
 VIDEO
 <paste video URL here>
 
 
 RELEASE
-I <type your full name> grant permission to CS105 course staff to use
+I Patrick Lai grant permission to CS105 course staff to use
 my Final Project program and video for the purpose of promoting CS105.
-<if you don't grant permission, erase the line above>
-
-
 
 BASIC CONCEPTS
-<List the best examples of the "Basic Concepts" used in the Final Project with a brief description of how/where each is used>
-
+drawing shapes and using drawing attributes (e.g. fill, stroke, lineCap, ...)
+conditionals
+user-defined functions
+loops
+arrays
+mouse or keyboard interaction
 
 EXTENDED CONCEPTS
-<List the "Extended Concepts" used in the Final Project with a brief description of how/where each is used>
-
+loading and displaying images
+image processing
+sound or video
 
 CODING QUALITY AND VISUAL DESIGN
-<argue for your coding quality and visual design>
+It's funny, 
 
 
 */
-
 // all code goes below here ....
 
 const speed = 3;
@@ -41,6 +46,19 @@ let rockX, rockY;
 let wrenchX, wrenchY;
 let score = 0;
 let life = 3;
+let victim1Img, victim2Img, victim3Img, trolleyImg, guy1Img, guy2Img, guy3Img, driftImg, bannerImg;
+
+function preload() {
+    victim1Img = loadImage("victim1.png");
+    victim2Img = loadImage("victim2.png");
+    victim3Img = loadImage("victim3.png");
+    trolleyImg = loadImage("trolley.png");
+    guy1Img = loadImage("guy1.png");
+    guy2Img = loadImage("guy2.png");
+    guy3Img = loadImage("guy3.png");
+    driftImg = loadImage("drift.png");
+    bannerImg = loadImage("banner.png");
+}
 
 function setup() {
     createCanvas(800, 300);
@@ -70,7 +88,6 @@ function draw() {
 
         train(); 
     }
-    
 }
 
 function train() {
