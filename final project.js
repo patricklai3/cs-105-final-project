@@ -10,10 +10,8 @@ Avoid rocks and collect victims and wrenches.
 Score is displayed in the top left corner. 
 Game ends when life reaches 0.
 
-
 VIDEO
 <paste video URL here>
-
 
 RELEASE
 I Patrick Lai grant permission to CS105 course staff to use
@@ -33,8 +31,7 @@ image processing
 sound or video
 
 CODING QUALITY AND VISUAL DESIGN
-It's funny, 
-
+It's funny, I swear. ( ͡° ͜ʖ ͡°)
 
 */
 // all code goes below here ....
@@ -129,7 +126,7 @@ function drawTrolley() {
 }
 
 function gameFlow() { 
-    let x = random(0, 100); // generate victims
+    let x = random(0, 50); // generate victims
     if (x < 1) {
             victimX[victimX.length] = 800;
             victimY[victimY.length] = Math.random() < 0.5 ? 360 : 460;
@@ -309,4 +306,5 @@ function keyPressed() {
     wrenchY = [360 + 200 / 800 * 260];
     life = 1;
     score = 0;
+    speed = 3;
 }
